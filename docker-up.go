@@ -8,6 +8,8 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+var debug bool
+
 func main() {
 	fmt.Println("📢 Hallo!!!") // Code here
 	app := &cli.App{
@@ -15,14 +17,16 @@ func main() {
 		Usage: "A simplification of commands surrounding Docker Compose up.",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
-				Name:    "debug",
-				Aliases: []string{"d"},
-				Usage:   "Enable debug mode",
-				Value:   false,
+				Name:        "debug",
+				Aliases:     []string{"d"},
+				Usage:       "Enable debug mode",
+				Value:       false,
+				Destination: &debug,
 			},
 		},
 		Action: func(cCtx *cli.Context) error {
-			chkDebug(cCtx)
+			chkDebug()
+
 			fmt.Printf("Hello %q", cCtx.Args().Get(0))
 			fmt.Println("🚀")
 			return nil
@@ -34,8 +38,8 @@ func main() {
 	}
 }
 
-func chkDebug(cCtx *cli.Context) {
-	if cCtx.Bool("debug") {
+func chkDebug() {
+	if debug {
 		fmt.Println("🐛 Debugging enabled")
 	}
 }
