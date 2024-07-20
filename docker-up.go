@@ -22,9 +22,7 @@ func main() {
 			},
 		},
 		Action: func(cCtx *cli.Context) error {
-			if cCtx.Bool("debug") {
-				fmt.Println("🐞 Debugging enabled")
-			}
+			chkDebug(cCtx)
 			fmt.Printf("Hello %q", cCtx.Args().Get(0))
 			fmt.Println("🚀")
 			return nil
@@ -33,5 +31,11 @@ func main() {
 
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func chkDebug(cCtx *cli.Context) {
+	if cCtx.Bool("debug") {
+		fmt.Println("🐛 Debugging enabled")
 	}
 }
