@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	colorsTest = "\n{{.Colors.Green}}Hello sadf adf {{.Colors.Underline}}asd{{.Colors.Bold}} fas df{{.Colors.Reset}}\n"
+	colorsTest = "\n{{.Colors.Green}}Hello sa\tdf adf {{.Colors.Underline}}asd{{.Colors.Bold}} fas df{{.Colors.Reset}}\n"
 )
 
 var debug bool
