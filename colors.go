@@ -1,7 +1,7 @@
 package main
 
-// Col is a map of Col
-type Col struct {
+// col is a map of col
+type col struct {
 	Black         string
 	Red           string
 	Green         string
@@ -41,10 +41,11 @@ type Col struct {
 	EraseScreen   string
 	EraseStart    string
 	EraseEnd      string
+	Tab           string
 }
 
 // Colors represents a collection of ANSI escape codes for different colors.
-var Colors = Col{
+var Colors = col{
 	Black:         "\033[30m",
 	Red:           "\033[31m",
 	Green:         "\033[0;32m",
@@ -84,4 +85,5 @@ var Colors = Col{
 	EraseScreen:   "\033[2J",
 	EraseStart:    "\033[1K",
 	EraseEnd:      "\033[K",
+	Tab:           "  ",
 }
