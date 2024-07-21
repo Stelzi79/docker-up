@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"os"
 
 	"github.com/urfave/cli/v2"
+)
+
+const (
+	colorsTest = "\n{{.Colors.Green}}Hello sadf adf {{.Colors.Underline}}asd{{.Colors.Bold}} fas df{{.Colors.Reset}}\n"
 )
 
 var debug bool
@@ -26,9 +31,16 @@ func main() {
 		},
 		Action: func(cCtx *cli.Context) error {
 			chkDebug()
-
+			//  {{"\"output\""}}
 			fmt.Printf("Hello %q", cCtx.Args().Get(0))
-			fmt.Println("🚀")
+			t1 := template.New("t1")
+			t1, err := t1.Parse(colorsTest)
+			if err != nil {
+				panic(err)
+			}
+
+			t1.Execute(os.Stdout, map[string]Col{"Colors": Colors})
+
 			return nil
 		},
 	}
