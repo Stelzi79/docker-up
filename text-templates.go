@@ -34,13 +34,14 @@ func parseTmpl(tmp string) string {
 	for k, v := range replacers[0] {
 		tmp = strings.ReplaceAll(tmp, k, v)
 	}
-	tmp += "{{.Colors.Reset}}"
+	tmp += "{{.Format.Reset}}"
 
 	t1, err := t1.Parse(tmp)
 	if err != nil {
 		panic(err)
 	}
 	var out bytes.Buffer
-	t1.Execute(&out, map[string]col{"Colors": Colors})
+	t1.Execute(&out, map[string]any{"Colors": Colors, "Format": Format})
+
 	return out.String()
 }

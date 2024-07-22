@@ -13,7 +13,7 @@ var tpls bool = false
 
 func main() {
 
-	fmt.Println("📢 Hallo!!!", "asfd") // Code here
+	fmt.Println("📢 Hallo!!!") // Code here
 
 	app := &cli.App{
 		Name:  "docker-up",
@@ -39,6 +39,7 @@ func main() {
 			fmt.Printf("Hello %q\n", cCtx.Args().Get(0))
 
 			fmt.Println(templates.colorsTest)
+			fmt.Println("salkdfjaslökdjfaskjf")
 			return nil
 		},
 	}
